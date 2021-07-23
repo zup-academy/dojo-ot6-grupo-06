@@ -31,4 +31,8 @@ public class CadastroTurmaRequest {
                 ", terminaEm=" + terminaEm +
                 '}';
     }
+    
+    public TurmaEntity toModel() {
+    	return new TurmaEntity(this.nome, this.iniciadaEm, this.terminaEm);
+    }
 }
