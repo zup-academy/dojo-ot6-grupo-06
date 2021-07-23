@@ -18,20 +18,15 @@ public class CadastroTurmaController {
 
 	@Autowired
 	private TurmaRepository repository;
-	
-	
-	
+
     @PostMapping
     public ResponseEntity<?> salvar(@RequestBody @Valid CadastroTurmaRequest request){
     	
     	TurmaEntity turmaEntity = request.toModel();
-    	
-    	
-    	List<TurmaEntity> listaTurma= repository.findAll();
-    	listaTurma.stream().anyMatch(turma->{
-    		
-    	})
-    	
+
+    	if(repository.existsByNome(request.getNome())){
+    	    return ResponseEntity.badRequest().body(new ErroResponse(request.getNome(), "o nome já existe"));
+        }
     	
         return ResponseEntity.ok(request.toString());
     }

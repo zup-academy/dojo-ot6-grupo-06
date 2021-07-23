@@ -35,4 +35,8 @@ public class CadastroTurmaRequest {
     public TurmaEntity toModel() {
     	return new TurmaEntity(this.nome, this.iniciadaEm, this.terminaEm);
     }
+
+    public String getNome() {
+        return nome;
+    }
 }
