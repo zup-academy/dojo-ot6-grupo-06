@@ -17,9 +17,11 @@ public class CadastroTurmaRequest {
     @FutureOrPresent
     private LocalDate terminaEm;
 
-    public CadastroTurmaRequest() {
+    public CadastroTurmaRequest(String nome, LocalDate iniciadaEm, LocalDate terminaEm) {
+        this.nome = nome;
+        this.iniciadaEm = iniciadaEm;
+        this.terminaEm = terminaEm;
     }
-
 
     @Override
     public String toString() {
