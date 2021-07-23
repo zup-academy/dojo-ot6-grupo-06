@@ -2,6 +2,7 @@ package br.com.zupedu.dojo.ot4dojo.cadastroturma;
 
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
@@ -12,9 +13,11 @@ public class CadastroTurmaRequest {
     private String nome;
 
     @FutureOrPresent
+    @NotNull
     private LocalDate iniciadaEm;
 
     @FutureOrPresent
+    @NotNull
     private LocalDate terminaEm;
 
     public CadastroTurmaRequest(String nome, LocalDate iniciadaEm, LocalDate terminaEm) {

@@ -36,4 +36,8 @@ public class TurmaEntity {
                 ", terminaEm=" + terminaEm +
                 '}';
     }
+
+    public Object getId() {
+        return null;
+    }
 }

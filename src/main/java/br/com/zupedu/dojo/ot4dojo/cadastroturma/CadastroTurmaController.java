@@ -7,7 +7,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriBuilder;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -22,7 +25,7 @@ public class CadastroTurmaController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<?> salvar(@RequestBody @Valid CadastroTurmaRequest request){
+    public ResponseEntity<?> salvar(@RequestBody @Valid CadastroTurmaRequest request, UriComponentsBuilder uri){
     	
     	TurmaEntity turmaEntity = request.toModel();
 
@@ -32,7 +35,11 @@ public class CadastroTurmaController {
 
     	repository.save(turmaEntity);
 
-        return ResponseEntity.ok(request.toString());
+        
+        UriBuilder uriBuilder = uriBuilder.path("/turmas/{id}").buildAndExpand(turmaEntity.getId()).toUri();
+
+	    return ResponseEntity.created(uri).body(new TurmaResponse(turmaEntity));	
+        
     }
 
 }

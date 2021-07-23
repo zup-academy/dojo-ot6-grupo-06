@@ -13,7 +13,7 @@ public class ErroResponse {
         return nome;
     }
 
-    public String mensagem() {
+    public String getMensagem() {
         return mensagem;
     }
 }
